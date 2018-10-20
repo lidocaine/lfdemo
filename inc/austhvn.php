@@ -39,12 +39,14 @@ function austhvn_adjust_archive_title( $title ) {
 }
 add_filter( 'get_the_archive_title', 'austhvn_adjust_archive_title' );
 
-function austhvn_randomize_archive_order( $query ) {
-	if ( $query->is_main_query() && ! $query->is_feed() && ! is_admin() && is_post_type_archive( 'team' ) ) {
-		$query->set( 'orderby', 'rand' );
-	}
-}
-add_action( 'pre_get_posts', 'austhvn_randomize_archive_order' );
+// I'm commenting this out as I added more team members, this randomization is no longer useful for visual variation.
+//
+//function austhvn_randomize_archive_order( $query ) {
+//	if ( $query->is_main_query() && ! $query->is_feed() && ! is_admin() && is_post_type_archive( 'team' ) ) {
+//		$query->set( 'orderby', 'rand' );
+//	}
+//}
+//add_action( 'pre_get_posts', 'austhvn_randomize_archive_order' );
 
 function austhvn_setup_theme() {
 	// Add a custom square crop for headshot images
