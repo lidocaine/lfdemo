@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! function_exists ( 'understrap_pagination' ) ) {
 
-	function understrap_pagination( $args = array(), $class = 'pagination' ) {
+	function understrap_pagination( $args = array(), $class = '' ) {
 
         if ($GLOBALS['wp_query']->max_num_pages <= 1) return;
 
@@ -29,9 +29,9 @@ if ( ! function_exists ( 'understrap_pagination' ) ) {
 
         ?>
 
-        <nav aria-label="<?php echo $args['screen_reader_text']; ?>">
+        <nav class="pagination-contain" aria-label="<?php echo $args['screen_reader_text']; ?>">
 
-            <ul class="pagination">
+            <ul class="pagination <?php echo $class; ?>">
 
                 <?php
 
