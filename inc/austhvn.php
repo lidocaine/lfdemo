@@ -30,6 +30,40 @@ function austhvn_enqueue() {
 }
 add_action( 'wp_enqueue_scripts', 'austhvn_enqueue' );
 
+function austhvn_adjust_archive_title( $title ) {
+	if ( is_post_type_archive( 'team' ) ) {
+		$title = post_type_archive_title( '', false );
+	}
+
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'austhvn_adjust_archive_title' );
+
+function austhvn_randomize_archive_order( $query ) {
+	if ( $query->is_main_query() && ! $query->is_feed() && ! is_admin() && is_post_type_archive( 'team' ) ) {
+		$query->set( 'orderby', 'rand' );
+	}
+}
+add_action( 'pre_get_posts', 'austhvn_randomize_archive_order' );
+
+function austhvn_setup_theme() {
+	// Add a custom square crop for headshot images
+	// Apparently the default Medium image size is 300x300, but that can't be relied on as it can be changed from the
+	// admin panel.
+	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'team-headshot-square', 200, 200, true );
+	add_filter( 'image_size_names_choose', 'austhvn_custom_img_sizes' );
+	function austhvn_custom_img_sizes( $sizes ) {
+		return array_merge( $sizes, array(
+			'team-headshot-square' => __( 'Team Member Headshot (Sq)' ),
+		) );
+	}
+}
+add_action( 'after_setup_theme', 'austhvn_setup_theme' );
+
+/**
+ * To be used in templates...
+ */
 function austhnv_social_icons( $links, $echo = true ) {
 	if ( ! empty( $links ) ) {
 		$parsed     = [];
@@ -72,28 +106,3 @@ function austhvn_do_icon( $url, $additional_classes = '' ) {
 
 	return '<a href="' . $url . '" target="_blank"><i class="icon ion-logo-' . $service . ' ' . $additional_classes . '"></i></a>';
 }
-
-function austhvn_adjust_archive_title( $title ) {
-	if ( is_post_type_archive( 'team' ) ) {
-		$title = post_type_archive_title( '', false );
-	}
-
-	return $title;
-}
-add_filter( 'get_the_archive_title', 'austhvn_adjust_archive_title' );
-
-function austhvn_setup_theme() {
-	// Add a custom square crop for headshot images
-	// Apparently the default Medium image size is 300x300, but that can't be relied on as it can be changed from the
-	// admin panel.
-	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'team-headshot-square', 200, 200, true );
-	add_filter( 'image_size_names_choose', 'austhvn_custom_img_sizes' );
-	function austhvn_custom_img_sizes( $sizes ) {
-		return array_merge( $sizes, array(
-			'team-headshot-square' => __( 'Team Member Headshot (Sq)' ),
-		) );
-	}
-}
-
-add_action( 'after_setup_theme', 'austhvn_setup_theme' );
