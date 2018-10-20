@@ -1,0 +1,101 @@
+body {
+  height: 100%;
+}
+
+.fillHW {
+  width: 100%;
+  height: 100%;
+}
+
+.team-member {
+  margin-bottom: 15px;
+
+  .member-headshot {
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Overlay
+  .member-headshot::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+  }
+
+  .member-meta-contain {
+    @extend .fillHW;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+
+    color: #FFF;
+    text-align: center;
+
+    .align-contain {
+      @extend .fillHW;
+      display: table;
+    }
+
+    .member-meta-wrapper {
+      @extend .fillHW;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  .member-name {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  .member-title {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+    background-color: #F00;
+    padding: 3px 5px;
+    font-weight: bold;
+  }
+
+  .member-data-contain {
+    display: none;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+    &.open {
+      opacity: 1;
+    }
+  }
+
+  .member-social-media {
+    display: block;
+    background-color: black;
+    text-align: center;
+    font-size: 1.25rem;
+
+    a {
+      display: inline-block;
+      padding: 5px 10px;
+      color: #fff;
+    }
+  }
+
+  .member-bio {
+    padding-top: 10px;
+    text-align: justify;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+
+}

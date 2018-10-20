@@ -1,0 +1,83 @@
+body {
+  height: 100%;
+}
+
+.fillHW, .team-member .member-meta-contain .member-meta-wrapper, .team-member .member-meta-contain .align-contain, .team-member .member-meta-contain {
+  width: 100%;
+  height: 100%;
+}
+
+.team-member {
+  margin-bottom: 15px;
+}
+.team-member .member-headshot {
+  position: relative;
+}
+.team-member .member-headshot img {
+  width: 100%;
+  height: auto;
+}
+.team-member .member-headshot::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+.team-member .member-meta-contain {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  color: #FFF;
+  text-align: center;
+}
+.team-member .member-meta-contain .align-contain {
+  display: table;
+}
+.team-member .member-meta-contain .member-meta-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+.team-member .member-name {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+.team-member .member-title {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+  background-color: #F00;
+  padding: 3px 5px;
+  font-weight: bold;
+}
+.team-member .member-data-contain {
+  display: none;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+.team-member .member-data-contain.open {
+  opacity: 1;
+}
+.team-member .member-social-media {
+  display: block;
+  background-color: black;
+  text-align: center;
+  font-size: 1.25rem;
+}
+.team-member .member-social-media a {
+  display: inline-block;
+  padding: 5px 10px;
+  color: #fff;
+}
+.team-member .member-bio {
+  padding-top: 10px;
+  text-align: justify;
+}
+.team-member .member-bio p {
+  font-size: 0.75rem;
+}
+
+/*# sourceMappingURL=austhvn.css.map */
