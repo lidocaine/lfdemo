@@ -1,3 +1,25 @@
+/**
+ * Begin "fluff" Styles
+ * These are some quick styles I did just to make the overall look of the demo page better.
+ */
+
+.bg-primary, .btn-primary {
+  background-color: #000 !important;
+}
+.btn-primary {
+  border-color: #000;
+}
+a {
+  color: #851c17;
+}
+
+
+/**
+ * Begin Exercise-related Styles
+ */
+$austhvn_primary:   #000;
+$austhvn_secondary: #851c17;
+
 body {
   height: 100%;
 }
@@ -98,4 +120,19 @@ body {
     }
   }
 
+}
+
+.pagination-contain {
+  clear: both;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.page-link {
+  color: $austhvn_secondary;
+
+  .page-item.active & {
+    background-color: $austhvn_primary;
+    border-color: $austhvn_primary;
+  }
 }
