@@ -21,7 +21,7 @@
 
             function openMemberBio(el) {
                 $(el).addClass('open');
-                $(el).siblings('.member-data-contain').stop().addClass('open').slideDown();
+                $(el).siblings('.member-data-contain').stop().slideDown().addClass('open');
             }
         });
 

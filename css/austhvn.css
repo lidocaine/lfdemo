@@ -31,6 +31,7 @@ body {
 }
 .team-member .member-headshot {
   position: relative;
+  cursor: pointer;
 }
 .team-member .member-headshot img {
   width: 100%;
